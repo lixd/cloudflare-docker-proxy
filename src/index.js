@@ -18,7 +18,7 @@ const routes = {
   "cloudsmith.imixc.top": "https://docker.cloudsmith.io",
 
   // staging
-  "docker-staging.lixd.xyz": dockerHub,
+  "docker-staging.imixc.top": dockerHub,
 };
 
 function routeByHosts(host) {
