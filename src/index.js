@@ -1,4 +1,13 @@
 import DOCS from './help.html'
+// return docs
+if (url.pathname === "/") {
+  return new Response(DOCS, {
+    status: 200,
+    headers: {
+      "content-type": "text/html"
+    }
+  });
+}
 
 addEventListener("fetch", (event) => {
   event.passThroughOnException();
@@ -9,16 +18,17 @@ const dockerHub = "https://registry-1.docker.io";
 
 const routes = {
   // production
-  "docker.lixd.xyz": dockerHub,
-  "quay.lixd.xyz": "https://quay.io",
-  "gcr.lixd.xyz": "https://gcr.io",
-  "k8s-gcr.lixd.xyz": "https://k8s.gcr.io",
-  "k8s.lixd.xyz": "https://registry.k8s.io",
-  "ghcr.lixd.xyz": "https://ghcr.io",
-  "cloudsmith.lixd.xyz": "https://docker.cloudsmith.io",
+  "docker.robinjiang.com": dockerHub,
+  "quay.robinjiang.com": "https://quay.io",
+  "gcr.robinjiang.com": "https://gcr.io",
+  "k8s-gcr.robinjiang.com": "https://k8s.gcr.io",
+  "k8s.robinjiang.com": "https://registry.k8s.io",
+  "ghcr.robinjiang.com": "https://ghcr.io",
+  "cloudsmith.robinjiang.com": "https://docker.cloudsmith.io",
+  "ecr.robinjiang.com": "https://public.ecr.aws",
 
   // staging
-  "docker-staging.lixd.xyz": dockerHub,
+  "docker-staging.robinjiang.com": dockerHub,
 };
 
 function routeByHosts(host) {
@@ -43,15 +53,6 @@ async function handleRequest(request) {
         status: 404,
       }
     );
-  }
-  // return docs
-  if (url.pathname === "/") {
-    return new Response(DOCS, {
-      status: 200,
-      headers: {
-        "content-type": "text/html"
-      }
-    });
   }
   const isDockerHub = upstream == dockerHub;
   const authorization = request.headers.get("Authorization");
