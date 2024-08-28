@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>镜像使用说明</title>
+    <title>Tecloman镜像使用说明</title>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -80,7 +80,7 @@
 <body>
 <div class="header">
     <h1>镜像使用说明</h1>
-    <a href="https://github.com/lixd/cloudflare-docker-proxy" target="_blank" class="github-link">
+    <a href="https://github.com/chentututu/cloudflare-docker-proxy" target="_blank" class="github-link">
         <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" class="github-icon">
     </a>
 </div>
@@ -93,6 +93,7 @@
 }
 EOF
 # 配置完后需要重启 Docker 服务
+sudo systemctl daemon-reload
 sudo systemctl restart docker
 </code></pre>
         <p>使用该代理从不同的镜像仓库拉取镜像，请参考以下命令：</p>
